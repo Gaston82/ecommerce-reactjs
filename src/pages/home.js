@@ -1,3 +1,11 @@
+import ListProducts from "../components/listProducts";
+import useProducts from "../hooks/useProducts";
+
 export default function Home() {
-  return <h1>Home page</h1>;
+  const { listProducts } = useProducts();
+  if (!listProducts) {
+    return <p>Loading...</p>;
+  }
+  console.log(listProducts);
+  return <ListProducts products={listProducts} />;
 }
