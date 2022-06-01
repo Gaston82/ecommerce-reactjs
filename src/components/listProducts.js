@@ -7,6 +7,11 @@ export default function ListProducts({ products }) {
     return <p>Loading...</p>;
   }
   return products.map((product) => (
-    <Product key={product.id} title={product.title} image={product.image} />
+    <Product
+      key={product.id}
+      title={product.title}
+      image={product.image}
+      id={product.id}
+    />
   ));
 }
