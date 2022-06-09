@@ -6,3 +6,7 @@ export async function getAllProducts() {
 
   return data;
 }
+
+export default function getById() {
+  console.log("hello");
+}
