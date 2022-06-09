@@ -8,5 +8,5 @@ export async function getAllProducts() {
 }
 
 export default function getById() {
-  console.log("hello");
+  console.log("hello gaston !!");
 }
