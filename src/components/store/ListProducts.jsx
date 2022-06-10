@@ -23,6 +23,7 @@ export const ListProducts = ({ products }) => {
                                             title={product.title}
                                             image={product.image}
                                             id={product.id}
+                                            price={product.price}
                                             />
                                     </div>          
                                 </div>

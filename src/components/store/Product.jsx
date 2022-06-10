@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export const Product = ({ id, title }) => {
+export const Product = ({ id, title,price }) => {
   return (
     
     <article>
@@ -16,7 +16,7 @@ export const Product = ({ id, title }) => {
           </a>
 
           <span className="stext-105 cl3">
-            $16.64
+            {price}€
           </span>
         </div>
 

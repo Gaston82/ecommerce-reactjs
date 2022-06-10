@@ -1,8 +1,24 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import {getById} from "../services/productsServices";
 
 export const Detail = () => {
 
     let { id } = useParams();
+    
+    const [product,setProduct]=useState(null)
+
+    useEffect(()=>{
+     const fetchProductById = async()=>{
+         const result = await getById(id)
+         setProduct(result)
+     }
+     fetchProductById()
+    },[id])
+
+    if (!product) {
+        return <p>Loading...</p>
+    }
 
     return (
         <div>
@@ -19,7 +35,7 @@ export const Detail = () => {
                                         <div className="slick3 gallery-lb">
                                             <div className="item-slick3" data-thumb="images/product-detail-01.jpg">
                                                 <div className="wrap-pic-w pos-relative">
-                                                    <img src="images/product-detail-01.jpg" alt="IMG-PRODUCT"></img>
+                                                    <img src={product.image} alt="IMG-PRODUCT"></img>
 
                                                     <a className="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-01.jpg">
                                                         <i className="fa fa-expand"></i>
@@ -38,12 +54,12 @@ export const Detail = () => {
                                     </h4>
 
                                     <span className="mtext-106 cl2">
-                                        $58.79
+                                        {product.price}€
                                     </span>
 
                                     <p className="stext-102 cl3 p-t-23">
-                                        Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.
-                                    </p>
+                                       {product.description}                                    
+                                       </p>
                                                 
                                     <div className="p-t-33">
                                         <div className="flex-w flex-r-m p-b-10">
