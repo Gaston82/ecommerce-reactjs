@@ -13,24 +13,21 @@ import { Store } from "./components/store/Store";
 import { Detail } from "./pages/Detail";
 
 function App() {
-
-
-  const {setUser} = useContext(userCont)
+  const { setUser } = useContext(userCont);
 
   // Recuperamos sesión del usuario
-  useEffect(()=>{
+  useEffect(() => {
     get("/api/auth/validate")
-    .then(result=>{
-      setUser({
-        logged:true,
-        user:result.user
+      .then((result) => {
+        setUser({
+          logged: true,
+          user: result.user,
+        });
       })
-    })
-    .catch(error=>{
-      //console.log(error)
-    })
-  },[setUser])
-
+      .catch((error) => {
+        //console.log(error)
+      });
+  }, [setUser]);
 
   return (
     <div className="App">
@@ -39,10 +36,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/detail/:id" element={<Detail />} />
-        <Route path="/login" element={<Login />} /> 
+        <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/store" element={<Store />} />
-
       </Routes>
     </div>
   );

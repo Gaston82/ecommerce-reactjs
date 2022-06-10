@@ -7,6 +7,8 @@ export async function getAllProducts() {
   return data;
 }
 
-export default function getById() {
-  console.log("hello gaston !!");
+export async function getById(id) {
+  const { data } = await axios(`https://fakestoreapi.com/products/${id}`);
+  console.log(data);
+  return data;
 }
