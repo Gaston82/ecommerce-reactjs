@@ -3,6 +3,8 @@ import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { userCont } from '../../context/UserContext';
 import { get } from '../../api'
+import { types } from '../../types/types';
+
 
 
 export const Navbar = () => {
@@ -15,7 +17,7 @@ export const Navbar = () => {
         .then(result=>{
             console.log(result)
             setUser({
-                type:'LOGOUT'
+                type: types.logout
             })
             console.log("logout correcto")
             navigate("/")
@@ -23,30 +25,21 @@ export const Navbar = () => {
     }
 
     return (
-        <div> 	           
-            <header>
-                <div className="container-menu-desktop">
-                    <div className="top-bar">
-                        <div className="content-topbar flex-sb-m h-full container">
-                            <div className="left-top-bar">
-                            </div>
-                            <div className="right-top-bar flex-w h-full">
-                                {
-                                    !logged?<>
-                                        <a href="/login" className="flex-c-m trans-04 p-lr-25">LOGIN </a>
-                                        <a href="/signup" className="flex-c-m trans-04 p-lr-25">SIGNUP </a>
-                                    
-                                    </>:
-                                    <>
-                                        <a href="/#" className="flex-c-m trans-04 p-lr-25"  onClick={handleLogOut}> SALIR</a>
-                                    
-                                    </>
-                                }
-                            </div>
-                        </div>
-                    </div>     
-                </div>
-            </header>
-        </div>
+
+        <div>
+            <br />
+            <ul className="nav justify-content-end">
+                <li className="nav-item">
+                    {!logged&&<a href="/login" type='button' className="flex-c-m trans-04 p-lr-25"><h2> LOGIN</h2> </a>}
+                </li>
+                <li className="nav-item">
+                    {!logged&&<a href="/signup" className="flex-c-m trans-04 p-lr-25"><h2>SIGNUP</h2> </a>}
+                </li>
+                <li className="nav-item">
+                     {logged&&<a href="/#" className="flex-c-m trans-04 p-lr-25"  onClick={handleLogOut}> SALIR</a>}
+                </li>
+            </ul>
+        
+      </div>
   )
 }

@@ -6,6 +6,7 @@ import { userCont } from '../../context/UserContext'
 import { post } from '../../api'
 import "../../css/auth/Login_v5/css/main.css"
 import { Errors } from '../errors/Errors'
+import { types } from '../../types/types'
 
 export const SignUp = () => {
 
@@ -27,7 +28,7 @@ export const SignUp = () => {
           name:name.value
       }).then(({user})=>{
           setUser({
-            type:'SIGNUP',
+            type:types.signup,
             payload:user
           })
           console.log("registro exitoso")

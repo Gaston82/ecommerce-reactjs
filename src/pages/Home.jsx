@@ -1,4 +1,5 @@
 import React from 'react'
+import { Footer } from '../components/layouts/Footer'
 
 export const Home = () => {
   return (
@@ -15,11 +16,11 @@ export const Home = () => {
 							<a href="/#" className="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 								<div className="block1-txt-child1 flex-col-l">
 									<span className="block1-name ltext-102 trans-04 p-b-8">
-										Women
+										Mujer
 									</span>
 
 									<span className="block1-info stext-102 trans-04">
-										Spring 2018
+										Invierno 2022
 									</span>
 								</div>
 
@@ -40,11 +41,11 @@ export const Home = () => {
 							<a href="/#" className="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 								<div className="block1-txt-child1 flex-col-l">
 									<span className="block1-name ltext-102 trans-04 p-b-8">
-										Men
+										Hombre
 									</span>
 
 									<span className="block1-info stext-102 trans-04">
-										Spring 2018
+										Invierno 2022
 									</span>
 								</div>
 
@@ -65,11 +66,11 @@ export const Home = () => {
 							<a href="/#" className="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 								<div className="block1-txt-child1 flex-col-l">
 									<span className="block1-name ltext-102 trans-04 p-b-8">
-										Accessories
+										Accesorios
 									</span>
 
 									<span className="block1-info stext-102 trans-04">
-										New Trend
+										Nueva Tendencia
 									</span>
 								</div>
 
@@ -84,6 +85,7 @@ export const Home = () => {
 				</div>
 			</div>
 		</div>
+		<Footer />
     </div>
   )
 }

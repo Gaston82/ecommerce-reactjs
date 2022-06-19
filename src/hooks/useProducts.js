@@ -7,7 +7,7 @@ export default function useProducts() {
   useEffect(() => {
     const fetchProducts = async () => {
       const response = await getAllProducts();
-      console.log(response);
+      //console.log(response);
       setListProducts(response);
     };
     fetchProducts();

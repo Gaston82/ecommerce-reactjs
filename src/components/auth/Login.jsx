@@ -7,6 +7,7 @@ import { post } from '../../api'
 
 import "../../css/auth/Login_v5/css/main.css"
 import { Errors } from '../errors/Errors'
+import { types } from '../../types/types'
 
 export const Login = () => {
 
@@ -28,7 +29,7 @@ export const Login = () => {
       password:password.value
     }).then(({user})=>{
       setUser({
-        type:'LOGIN',
+        type:types.login,
         payload:user
       }) 
       console.log("logueado")

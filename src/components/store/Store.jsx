@@ -42,6 +42,7 @@ export const Store = () => {
                     </div>
 
                     <ListProducts products={listProducts} />
+                    
                 </div>
             </section>
         </div>
