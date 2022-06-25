@@ -3,7 +3,8 @@ import { useContext } from 'react';
 import { userCont } from '../../context/UserContext';
 import { SelectedProductsModal } from '../store/SelectedProductsModal';
 import { useSelector } from 'react-redux';
-import { initialState } from '../../reducers/productReducer';
+import { initialState } from "../../redux/reducers/productReducer";
+
 
 
 export const NavbarShop = () => {

@@ -1,9 +1,13 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 import { Product } from './Product';
 
-export const ListProducts = ({ products }) => {
+export const ListProducts = () => {
 
+
+    const products = useSelector((state)=>state.allProducts.products)
     console.log(products)
+
     if (!products) {
         return <p>Loading...</p>;
     }

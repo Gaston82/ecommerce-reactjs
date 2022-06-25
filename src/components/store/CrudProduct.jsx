@@ -1,7 +1,7 @@
 import React from 'react'
 import { useReducer } from 'react';
 import useProducts from '../../hooks/useProducts';
-import productReducer, { initialState } from '../../reducers/productReducer';
+import  { productReducer,initialState } from '../../redux/reducers/productReducer';
 import { types } from '../../types/types';
 import Swal from 'sweetalert2'
 
