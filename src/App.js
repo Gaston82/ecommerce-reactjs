@@ -1,3 +1,4 @@
+import { useEffect, useContext } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import { Login } from "./components/auth/Login";
@@ -5,12 +6,15 @@ import { SignUp } from "./components/auth/SignUp";
 import { Navbar } from "./components/layouts/Navbar";
 import { Home } from "./pages/Home";
 import { NavbarShop } from "./components/layouts/NavbarShop";
-import { useEffect } from "react";
 import { get } from "./api";
-import { useContext } from "react";
+
 import { userCont } from "./context/UserContext";
 import { Store } from "./components/store/Store";
 import { Detail } from "./pages/Detail";
+import { Provider } from "react-redux";
+import { SelectedProductsDetail } from "./components/store/SelectedProductsDetail";
+import { CrudProduct } from "./components/store/CrudProduct";
+import { store } from "./redux/store/store";
 
 function App() {
   const { setUser } = useContext(userCont);
@@ -30,7 +34,7 @@ function App() {
   }, [setUser]);
 
   return (
-    <div className="App">
+    <Provider store={store}>
       <Navbar />
       <NavbarShop />
       <Routes>
@@ -39,8 +43,13 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/store" element={<Store />} />
+        <Route
+          path="/selectedProductsDetail"
+          element={<SelectedProductsDetail />}
+        />
+        <Route path="/crudProducts" element={<CrudProduct />} />
       </Routes>
-    </div>
+    </Provider>
   );
 }
 

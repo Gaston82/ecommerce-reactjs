@@ -915,7 +915,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   top: 0;
   right: 0;
   background-color: rgba(0,0,0,0.0);
-  visibility: hidden;
+  visibility:visible;
   
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;

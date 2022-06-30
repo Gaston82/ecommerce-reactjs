@@ -1,20 +1,56 @@
-import { useEffect, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { useParams } from "react-router-dom";
 import {getById} from "../services/productsServices";
+import productReducer, { initialState } from '../redux/reducers/productReducer'
+import { types } from "../types/types";
+import { useDispatch, useSelector } from "react-redux";
+import { selectedProduct } from "../redux/actions/productAction";
+
 
 export const Detail = () => {
-
-    let { id } = useParams();
     
-    const [product,setProduct]=useState(null)
+    const product = useSelector((state)=>state.product)
+    let { id } = useParams();
+    const dispatch=useDispatch()
+
+    // const [state,dispatch] = useReducer(productReducer,initialState)
+
+    
+    // const [product,setProduct]=useState(null)
+    const [quantity, setQuantity] = useState(1);
+    
 
     useEffect(()=>{
      const fetchProductById = async()=>{
          const result = await getById(id)
-         setProduct(result)
+         dispatch(selectedProduct(result))
      }
      fetchProductById()
     },[id])
+
+
+
+    const increaseQuantity = () => {
+        setQuantity( quantity + 1)
+    }
+
+    const decreaseQuantity = () => {
+        if(quantity > 1){
+            setQuantity( quantity - 1)
+        }
+        
+    }
+
+    const addToCart = () => {
+        dispatch({
+            type: types.addToCart,
+            payload: { 
+                quantity
+            }
+        })
+       // dispatch(addToCart({product, quantity}))
+    } 
+
 
     if (!product) {
         return <p>Loading...</p>
@@ -36,10 +72,6 @@ export const Detail = () => {
                                             <div className="item-slick3" data-thumb="images/product-detail-01.jpg">
                                                 <div className="wrap-pic-w pos-relative">
                                                     <img src={product.image} alt="IMG-PRODUCT"></img>
-
-                                                    <a className="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-01.jpg">
-                                                        <i className="fa fa-expand"></i>
-                                                    </a>
                                                 </div>
                                             </div>
       
@@ -65,19 +97,19 @@ export const Detail = () => {
                                         <div className="flex-w flex-r-m p-b-10">
                                             <div className="size-204 flex-w flex-m respon6-next">
                                                 <div className="wrap-num-product flex-w m-r-20 m-tb-10">
-                                                    <div className="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+                                                    <div className="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m" onClick={()=>decreaseQuantity()}>
                                                         <i className="fs-16 zmdi zmdi-minus"></i>
                                                     </div>
 
-                                                    <input className="mtext-104 cl3 txt-center num-product" type="number" name="num-product" value="1"></input>
+                                                    <p className="mtext-104 cl3 txt-center num-product" name="num-product" >{ quantity }</p>
 
-                                                    <div className="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+                                                    <div className="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m" onClick={()=>increaseQuantity()}>
                                                         <i className="fs-16 zmdi zmdi-plus"></i>
                                                     </div>
                                                 </div>
 
-                                                <button className="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-                                                    Add to cart
+                                                <button className="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail" onClick={()=> addToCart()}>
+                                                    Agregar
                                                 </button>
                                             </div>
                                         </div>	

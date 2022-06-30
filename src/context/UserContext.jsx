@@ -1,6 +1,6 @@
 import React from 'react'
 import { createContext, useReducer } from 'react';
-import authReducer, { initialState } from '../reducers/authReducer';
+import authReducer, { initialState } from '../redux/reducers/authReducer';
 
 export const userCont = createContext();
 
