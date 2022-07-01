@@ -1,14 +1,19 @@
-import React from 'react'
+import { useContext } from "react";
+import { useNavigate } from 'react-router-dom'
 import {
     PaymentElement,
     useStripe,
     useElements
   } from "@stripe/react-stripe-js";
+import Swal from 'sweetalert2'
+import { cartContext } from '../../context/CartContext';
 
 export default function PaymentForm() {
 
     const stripe = useStripe();
     const elements = useElements();
+    const {setItems} = useContext(cartContext)
+    const navigate = useNavigate()
 
     const pay = async (event)=>{
         event.preventDefault()
@@ -21,10 +26,17 @@ export default function PaymentForm() {
 
         if(result.paymentIntent.status==="succeeded"){
             console.log("exitosoo")
-            alert("Pago exitoso!!!")
-            // Limpiar el contexto del carrito
-        }else{
-            console.log("error")
+            Swal.fire({
+                position: 'top-center',
+                icon: 'success',
+                title: 'Pago exitoso',
+                showConfirmButton: false,
+                timer: 1800
+              })
+            setItems({
+                type: "CLEAR"
+            })  
+            navigate("/store")
         }
     }
     return (

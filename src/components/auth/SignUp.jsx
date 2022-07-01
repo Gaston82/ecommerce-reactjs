@@ -7,6 +7,7 @@ import { post } from '../../api'
 import "../../css/auth/Login_v5/css/main.css"
 import { Errors } from '../errors/Errors'
 import { types } from '../../types/types'
+import { baseURL } from '../../config/index'
 
 export const SignUp = () => {
 
@@ -52,12 +53,12 @@ export const SignUp = () => {
         <div className="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
           <form className="login100-form validate-form flex-sb flex-w" onSubmit={ handleSignup }>
 
-            <a href='https://backendnodejstzuzulcode.uw.r.appspot.com/api/auth/facebook' className="btn-face m-b-20">
+            <a href={`${baseURL}/api/auth/facebook`} className="btn-face m-b-20">
                 <i className="fa fa-facebook-official"></i>
                 Facebook
             </a>
 
-            <a href='https://backendnodejstzuzulcode.uw.r.appspot.com/api/auth/google' className="btn-google m-b-20">
+            <a href={`${baseURL}/api/auth/google`} className="btn-google m-b-20">
               <img src="/icon-google.png" alt="GOOGLE"></img>
             </a>
 
