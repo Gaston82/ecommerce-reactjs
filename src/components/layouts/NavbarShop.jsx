@@ -2,16 +2,15 @@ import React from 'react'
 import { useContext } from 'react';
 import { userCont } from '../../context/UserContext';
 import { SelectedProductsModal } from '../store/SelectedProductsModal';
-import { useSelector } from 'react-redux';
-import { initialState } from "../../redux/reducers/productReducer";
+import { cartContext } from '../../context/CartContext'
 
 
 
 export const NavbarShop = () => {
 
     const { logged } = useContext(userCont);
-    const quantity = useSelector( state => initialState.quantity)
-    
+    const {items} = useContext(cartContext)
+
     return (
         
         <div>
@@ -26,7 +25,7 @@ export const NavbarShop = () => {
                                 </a>
 
                                     <div className="wrap-icon-header flex-w flex-r-m">
-                                        <div className="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify={quantity}  data-toggle="modal" data-target="#exampleModal" >
+                                        <div className="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify={items.length}  data-toggle="modal" data-target="#exampleModal" >
                                             <i className="zmdi zmdi-shopping-cart"></i>
                                         </div>
                                     </div>
@@ -37,7 +36,7 @@ export const NavbarShop = () => {
 
                     <div className="wrap-header-mobile">
                         <div className="wrap-icon-header flex-w flex-r-m m-r-15">
-                            <div className="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify={quantity}>
+                            <div className="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify={items.length}>
                                 <i className="zmdi zmdi-shopping-cart"></i>
                             </div>
                         </div>

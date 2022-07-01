@@ -6,7 +6,6 @@ import { ListProducts } from './ListProducts'
 export const Store = () => {
 
     const  {allProducts}  = useProducts();
-    
 
     // const listProducts=useSelector((state)=>state.allProducts.products)
     if (!allProducts) {

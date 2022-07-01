@@ -1,6 +1,5 @@
 import { useEffect, useContext } from "react";
 import { Routes, Route } from "react-router-dom";
-import "./App.css";
 import { Login } from "./components/auth/Login";
 import { SignUp } from "./components/auth/SignUp";
 import { Navbar } from "./components/layouts/Navbar";
@@ -15,23 +14,32 @@ import { Provider } from "react-redux";
 import { SelectedProductsDetail } from "./components/store/SelectedProductsDetail";
 import { CrudProduct } from "./components/store/CrudProduct";
 import { store } from "./redux/store/store";
+import { cartContext } from './context/CartContext';
+import { types } from './types/types';
+import "./App.css";
+
+
 
 function App() {
   const { setUser } = useContext(userCont);
+  const {setItems} = useContext(cartContext)
 
   // Recuperamos sesión del usuario
   useEffect(() => {
     get("/api/auth/validate")
-      .then((result) => {
-        setUser({
-          logged: true,
-          user: result.user,
-        });
+      .then(result=>{
+        setUser({type: types.login,payload:result.user})
+        get("/api/cart")
+        .then(data=>{
+          setItems({
+            type:"UPDATE",
+            payload:data
+          })
+        })
+        .catch(console.log)
       })
-      .catch((error) => {
-        //console.log(error)
-      });
-  }, [setUser]);
+      .catch(error=>console.log(error))
+    },[setUser,setItems])
 
   return (
     <Provider store={store}>
