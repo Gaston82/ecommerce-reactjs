@@ -14,7 +14,6 @@ export const Product = ({ id, title,price }) => {
       idProduct:id,
       amount:1
     }).then(data=>{
-      console.log("data", data)
       setItems({
         type:"UPDATE",
         payload:data
@@ -31,8 +30,8 @@ export const Product = ({ id, title,price }) => {
         VER DETALLE
       </Link>  */}
       <button onClick={()=>{ addToCart(id)}} 
-              className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-        AGREGAR AL CARRITO
+          className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+        AGREGAR
       </button> 
       <div className="block2-txt flex-w flex-t p-t-14">
         <div className="block2-txt-child1 flex-col-l ">

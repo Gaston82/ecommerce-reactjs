@@ -20,7 +20,7 @@ export const NavbarShop = () => {
                     <div className="container-menu-desktop">
                         <div className="wrap-menu-desktop">
                             <nav className="limiter-menu-desktop container">
-                                <a href="/#" className="logo">
+                                <a href="/store" className="logo">
                                     <strong>Ecommerce</strong>
                                 </a>
 

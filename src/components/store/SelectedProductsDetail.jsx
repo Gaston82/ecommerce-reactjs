@@ -2,26 +2,39 @@ import { useState, useEffect, useContext } from 'react';
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import { stripePK } from '../../config/index';
-import { get } from "../../api/index";
+import { get,del } from "../../api/index";
 import PaymentForm from '../payment/PaymentForm';
 import { cartContext } from '../../context/CartContext';
-
+import { FaTrash } from "react-icons/fa";
 
 const stripe = loadStripe(stripePK)
 
 export const SelectedProductsDetail = () => {
 
-    const {items} = useContext(cartContext)
+    const {items, setItems} = useContext(cartContext)
     const [clientSecret,setClientSecret] = useState()
 
     useEffect(()=>{
         get("/api/cart/pay")
         .then(data=>{
-            console.log("entre a la api de pagos")
             setClientSecret(data.clientSecret)
         })
         .catch(console.log)
     },[])
+
+
+    const deleteProdCart = (id)=>{
+        del("/api/cart/remove",{
+            idProduct:id
+        })
+        .then(data=>{
+            setItems({
+                type:"UPDATE",
+                payload:data
+            })
+        })
+        .catch(console.log)
+    }
 
     return (
         <>
@@ -64,6 +77,8 @@ export const SelectedProductsDetail = () => {
                                                             </div>
                                                         </td>
                                                         <td className="column-5">${item.price}</td>
+                                                        <td className="column-6"> <button className='btn btn-danger btn-sm' onClick={()=>{deleteProdCart(item._id)}}><FaTrash /></button></td>
+                                                
                                                     </tr>
                                                 ))}
                                     
