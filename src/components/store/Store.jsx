@@ -1,5 +1,5 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
+//import { useSelector } from 'react-redux';
 import useProducts from '../../hooks/useProducts';
 import { ListProducts } from './ListProducts'
 

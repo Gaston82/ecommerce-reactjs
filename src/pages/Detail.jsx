@@ -1,7 +1,7 @@
-import { useEffect, useReducer, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {getById} from "../services/productsServices";
-import productReducer, { initialState } from '../redux/reducers/productReducer'
+//import productReducer, { initialState } from '../redux/reducers/productReducer'
 import { types } from "../types/types";
 import { useDispatch, useSelector } from "react-redux";
 import { selectedProduct } from "../redux/actions/productAction";
