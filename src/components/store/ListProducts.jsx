@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+//import { useSelector } from 'react-redux';
 import { Product } from './Product';
 import React, { useEffect, useState } from 'react'
 import { get } from '../../api'
@@ -11,13 +11,31 @@ export const ListProducts = () => {
     //const products = useSelector((state)=>state.allProducts.products)
 
     useEffect(()=>{
-        get("/api/products")
+        get("/api/products?&page=1&limit=8")
         .then(({data})=>{
           setProducts(data)
         })
         .catch(console.log)
       },[])
   
+
+    const nextPage = () => {
+      
+        get("/api/products?&page=2&limit=8")
+        .then(({data})=>{
+            setProducts(data)
+        })
+        .catch(console.log)
+    }
+
+    const prevPage = () => {
+
+        get("/api/products?&page=1&limit=8")
+        .then(({data})=>{
+            setProducts(data)
+        })
+        .catch(console.log)
+    }
 
     if (!products) {
         return <p>Loading...</p>;
@@ -26,7 +44,7 @@ export const ListProducts = () => {
 
     return (
             <div>
-                <div className="row isotope-grid">
+                <div className="row justify-content-center isotope-grid">
                     {
                         products.map((product) => (   
 
@@ -48,6 +66,18 @@ export const ListProducts = () => {
                         ))
                     }
 
+                </div>
+                <div className='row justify-content-center'>
+                    <nav aria-label="...">
+                        <ul className="pagination">
+                            <li className="page-item">
+                            <button className="page-link"  onClick={ ()=> {prevPage()}}>Previo</button>
+                            </li>
+                            <li className="page-item">
+                            <button className="page-link" onClick={ ()=> {nextPage()}}>Siguiente</button>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
         )  
