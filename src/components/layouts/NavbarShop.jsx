@@ -29,6 +29,7 @@ export const NavbarShop = () => {
                                             <i className="zmdi zmdi-shopping-cart"></i>
                                         </div>
                                     </div>
+                                    {/* <a href="/addProduct" type='button' className='btn btn-success'><i className="zmdi zmdi-plus"></i></a> */}
                             </nav>
                         </div>	
                     </div>

@@ -88,7 +88,7 @@ export const SelectedProductsDetail = () => {
 
                                             {
                                                 items.map(item=>(
-                                                    <tr className="table_row">
+                                                    <tr className="table_row" key={item._id}>
                                                         <td className="column-1">
                                                             <div className="how-itemcart1">
                                                                 <img src={item.images[0]} alt={item.name}></img>
@@ -114,19 +114,6 @@ export const SelectedProductsDetail = () => {
                                                 
                                                     </tr>
                                                 ))}
-                                                {/* <div className="flex-w flex-t p-t-27 p-b-33">
-                                                        <div className="size-208">
-                                                            <span className="mtext-101 cl2">
-                                                                Total:
-                                                            </span>
-                                                        </div>
-
-                                                        <div className="size-209 p-t-1">
-                                                            <span className="mtext-110 cl2">
-                                                                $79.65
-                                                            </span>
-                                                        </div>
-                                                    </div> */}
                                             </tbody>
                                         </table>
                                     </div>

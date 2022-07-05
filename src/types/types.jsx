@@ -4,7 +4,6 @@ export const types = {
     logout: '[Auth] Logout',
 
     addProduct: '[Product] Add product store',
-    editProduct: '[Product] Edit product store',
     removeProduct: '[Product] Remove product store'
 
 }
