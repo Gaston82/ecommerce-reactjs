@@ -36,7 +36,10 @@ export const Navbar = () => {
                     {!logged&&<a href="/signup" className="flex-c-m trans-04 p-lr-25"><h2>SIGNUP</h2> </a>}
                 </li>
                 <li className="nav-item">
-                     {logged&&<a href="/#" className="flex-c-m trans-04 p-lr-25"  onClick={handleLogOut}> SALIR</a>}
+                     {logged&&<a href="/listAllProducts" className="flex-c-m trans-04 p-lr-25" > Listar productos</a>}
+                </li>
+                <li className="nav-item">
+                     {logged&&<button className="flex-c-m trans-04 p-lr-25"  onClick={handleLogOut}> SALIR</button>}
                 </li>
             </ul>
         

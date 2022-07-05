@@ -12,11 +12,12 @@ import { Store } from "./components/store/Store";
 import { Detail } from "./pages/Detail";
 import { Provider } from "react-redux";
 import { SelectedProductsDetail } from "./components/store/SelectedProductsDetail";
-import { CrudProduct } from "./components/store/CrudProduct";
 import { store } from "./redux/store/store";
 import { cartContext } from './context/CartContext';
 import { types } from './types/types';
 import "./App.css";
+import { AddProduct } from "./components/store/AddProduct";
+import { ListAllProducts } from "./components/store/ListAllProducts";
 
 
 
@@ -55,7 +56,8 @@ function App() {
           path="/selectedProductsDetail"
           element={<SelectedProductsDetail />}
         />
-        <Route path="/crudProducts" element={<CrudProduct />} />
+        <Route path="/listAllProducts" element={<ListAllProducts />} />
+        <Route path="/addProduct" element={<AddProduct />} />
       </Routes>
     </Provider>
   );

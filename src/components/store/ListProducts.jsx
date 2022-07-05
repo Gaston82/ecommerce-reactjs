@@ -1,17 +1,15 @@
-//import { useSelector } from 'react-redux';
 import { Product } from './Product';
 import React, { useEffect, useState } from 'react'
 import { get } from '../../api'
 
 
+
 export const ListProducts = () => {
 
     const [products,setProducts] = useState([])
-
-    //const products = useSelector((state)=>state.allProducts.products)
-
+ 
     useEffect(()=>{
-        get("/api/products?&page=1&limit=8")
+        get("/api/products/62bce0bfc07690368cc7d2b7?&page=1&limit=8")
         .then(({data})=>{
           setProducts(data)
         })
@@ -21,7 +19,7 @@ export const ListProducts = () => {
 
     const nextPage = () => {
       
-        get("/api/products?&page=2&limit=8")
+        get("/api/products/62bce0bfc07690368cc7d2b7?&page=2&limit=8")
         .then(({data})=>{
             setProducts(data)
         })
@@ -30,7 +28,7 @@ export const ListProducts = () => {
 
     const prevPage = () => {
 
-        get("/api/products?&page=1&limit=8")
+        get("/api/products/62bce0bfc07690368cc7d2b7?&page=1&limit=8")
         .then(({data})=>{
             setProducts(data)
         })
@@ -44,6 +42,7 @@ export const ListProducts = () => {
 
     return (
             <div>
+    
                 <div className="row justify-content-center isotope-grid">
                     {
                         products.map((product) => (   
